@@ -13,3 +13,12 @@ public class GamePanel extends JPanel implements ActionListener {
   private boolean running = false;
   private javax.swing.Timer timer;
 
+  public GamePanel() {
+        setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+        setBackground(Color.BLACK);
+        setFocusable(true);
+        addKeyListener(new MyKeyAdapter());
+        startGame();
+    }
+}
+
