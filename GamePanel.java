@@ -19,12 +19,17 @@ public class GamePanel extends JPanel implements ActionListener {
         setFocusable(true);
         addKeyListener(new MyKeyAdapter());
         startGame();
-    }
+   }
   public final void startGame() {
         snake = new LinkedList<>();
         snake.add(new Point(5, 5));
         direction = 'R';
         spawnFood();
   }
+  
+  public void spawnFood() {
+        Random rand = new Random();
+        int x, y;
+  }
+  
 }
-
