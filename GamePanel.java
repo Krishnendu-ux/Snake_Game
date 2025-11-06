@@ -12,4 +12,4 @@ public class GamePanel extends JPanel implements ActionListener {
   private char direction = 'R';
   private boolean running = false;
   private javax.swing.Timer timer;
-}  
+
