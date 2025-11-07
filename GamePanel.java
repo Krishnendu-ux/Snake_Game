@@ -32,6 +32,11 @@ public class GamePanel extends JPanel implements ActionListener {
   public void spawnFood() {
         Random rand = new Random();
         int x, y;
+        do {
+            x = rand.nextInt(GRID_WIDTH);
+            y = rand.nextInt(GRID_HEIGHT);
+            food = new Point(x, y);
+        }
   }
   
 }
