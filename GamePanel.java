@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements ActionListener {
         spawnFood();
         running = true;
         timer = new javax.swing.Timer(200, this);
+        timer.start();
   }
   
   public void spawnFood() {
