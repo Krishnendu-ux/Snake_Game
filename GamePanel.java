@@ -25,6 +25,8 @@ public class GamePanel extends JPanel implements ActionListener {
         snake.add(new Point(5, 5));
         direction = 'R';
         spawnFood();
+        running = true;
+        timer = new javax.swing.Timer(200, this);
   }
   
   public void spawnFood() {
