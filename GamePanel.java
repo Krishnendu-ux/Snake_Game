@@ -49,22 +49,37 @@ public class GamePanel extends JPanel implements ActionListener {
       }
   }
 
-   private class MyKeyAdapter extends KeyAdapter {
+  public void move() {
+        Point head = snake.peekFirst();
+        Point newHead = new Point(head.x, head.y);
+        switch (direction) {
+            case 'U' -> newHead.y--;
+            case 'D' -> newHead.y++;
+            case 'L' -> newHead.x--;
+            case 'R' -> newHead.x++;
+        }
+  }
+
+  private class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-            if (!running && e.getKeyCode() == KeyEvent.VK_ENTER) {
+          if (!running && e.getKeyCode() == KeyEvent.VK_ENTER) {
                 startGame();
                 repaint();
-            } else if (running) {
-                char prev = direction;
-                switch (e.getKeyCode()) {
-                    case KeyEvent.VK_LEFT:
-                        if (prev != 'R') direction = 'L'; break;
-                    case KeyEvent.VK_RIGHT:
-                        if (prev != 'L') direction = 'R'; break;
-                    case KeyEvent.VK_UP:
-                        if (prev != 'D') direction = 'U'; break;
-                    case KeyEvent.VK_DOWN:
-                        if (prev != 'U') direction = 'D'; break;
-                }
-            }
+          } 
+          else if (running) {
+              char prev = direction;
+              switch (e.getKeyCode()) {
+                  case KeyEvent.VK_LEFT:
+                      if (prev != 'R') direction = 'L'; break;
+                  case KeyEvent.VK_RIGHT:
+                      if (prev != 'L') direction = 'R'; break;
+                  case KeyEvent.VK_UP:
+                      if (prev != 'D') direction = 'U'; break;
+                  case KeyEvent.VK_DOWN:
+                      if (prev != 'U') direction = 'D'; break;
+              }
+          }
+        }
+    }
+}
