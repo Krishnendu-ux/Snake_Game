@@ -38,6 +38,7 @@ public class GamePanel extends JPanel implements ActionListener {
             y = rand.nextInt(GRID_HEIGHT);
             food = new Point(x, y);
         }
+        while (snake.contains(food));
   }
   
 }
