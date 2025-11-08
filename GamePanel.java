@@ -48,4 +48,23 @@ public class GamePanel extends JPanel implements ActionListener {
           repaint();
       }
   }
-}
+
+   private class MyKeyAdapter extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (!running && e.getKeyCode() == KeyEvent.VK_ENTER) {
+                startGame();
+                repaint();
+            } else if (running) {
+                char prev = direction;
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_LEFT:
+                        if (prev != 'R') direction = 'L'; break;
+                    case KeyEvent.VK_RIGHT
+                        if (prev != 'L') direction = 'R'; break;
+                    case KeyEvent.VK_UP:
+                        if (prev != 'D') direction = 'U'; break;
+                    case KeyEvent.VK_DOWN:
+                        if (prev != 'U') direction = 'D'; break;
+                }
+            }
