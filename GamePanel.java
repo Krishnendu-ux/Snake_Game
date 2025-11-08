@@ -41,4 +41,11 @@ public class GamePanel extends JPanel implements ActionListener {
         while (snake.contains(food));
   }
   
+  @Override
+  public void actionPerformed(ActionEvent e) {
+      if (running) {
+          move();
+          repaint();
+      }
+  }
 }
