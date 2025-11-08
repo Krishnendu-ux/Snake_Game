@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_LEFT:
                         if (prev != 'R') direction = 'L'; break;
-                    case KeyEvent.VK_RIGHT
+                    case KeyEvent.VK_RIGHT:
                         if (prev != 'L') direction = 'R'; break;
                     case KeyEvent.VK_UP:
                         if (prev != 'D') direction = 'U'; break;
