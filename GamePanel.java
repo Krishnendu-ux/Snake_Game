@@ -64,8 +64,16 @@ public class GamePanel extends JPanel implements ActionListener {
   if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newhead.y >= RID_HEIGHT || snake.contains(newhead)) {
     running = false;
     timer.stop();
+  }else {
+    snake.addFirst(newHead);
+    if (newHead.equals(food)) {
+                spawnFood();
+                score++;
+    } else {
+      snake.removelast();
+    }
   }
-
+  
   private class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
