@@ -60,6 +60,10 @@ public class GamePanel extends JPanel implements ActionListener {
             case 'L' -> newHead.x--;
             case 'R' -> newHead.x++;
         }
+    //game over conditions
+  if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newhead.y >= RID_HEIGHT || snake.contains(newhead)) {
+    running = false;
+    timer.stop();
   }
 
   private class MyKeyAdapter extends KeyAdapter {
