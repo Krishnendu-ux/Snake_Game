@@ -13,6 +13,8 @@ public class GamePanel extends JPanel implements ActionListener {
   private boolean running = false;
   private javax.swing.Timer timer;
 
+  private int score = 0; //saap kitna seb khaya uska tracker 
+
   public GamePanel() {
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         setBackground(Color.BLACK);
