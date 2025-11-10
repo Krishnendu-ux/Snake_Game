@@ -249,8 +249,20 @@ public class GamePanel extends JPanel implements ActionListener {
             case 'D' -> out ? headDownOut : headDownIn;
             case 'L' -> out ? headLeftOut : headLeftIn;
             default  -> out ? headRightOut : headRightIn;
-        };
+        };    
     }
-    
+    // Helper: draw directional tail if available (returns true if drawn)
+    private boolean drawTailIfAvailable(Graphics2D g2, int tailIndex, Point tailPoint) {
+        if (tailUp == null && tailDown == null && tailLeft == null && tailRight == null) return false;
+        Point tail = tailPoint;
+        Point beforeTail = snake.get(tailIndex - 1);
+        int dx = beforeTail.x - tail.x;
+        int dy = beforeTail.y - tail.y;
+        int px = tail.x * BOX_SIZE, py = tail.y * BOX_SIZE;
+        if (dx == 1 && tailLeft != null) { g2.drawImage(tailLeft, px, py, null); return true; }
+        if (dx == -1 && tailRight != null) { g2.drawImage(tailRight, px, py, null); return true; }
+        if (dy == 1 && tailUp != null) { g2.drawImage(tailUp, px, py, null); return true; }
+        if (dy == -1 && tailDown != null) { g2.drawImage(tailDown, px, py, null); return true; }
+        return false;
     }
 }
