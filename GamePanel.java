@@ -337,5 +337,30 @@ public class GamePanel extends JPanel implements ActionListener {
         g.dispose();
         return scaled;
     }
-    
+
+    private void initGroundVariants() {
+        groundVariant = new int[GRID_WIDTH][GRID_HEIGHT];
+        for (int x = 0; x < GRID_WIDTH; x++) {
+            for (int y = 0; y < GRID_HEIGHT; y++) {
+                groundVariant[x][y] = rng.nextBoolean() ? 1 : 0;
+            }
+        }
+        // smoothing (optional)
+        for (int pass = 0; pass < 2; pass++) {
+            int[][] copy = new int[GRID_WIDTH][GRID_HEIGHT];
+            for (int x = 0; x < GRID_WIDTH; x++) {
+                for (int y = 0; y < GRID_HEIGHT; y++) {
+                    int same = 0, total = 0;
+                    for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++) {
+                        int nx = x + dx, ny = y + dy;
+                        if (nx < 0 || ny < 0 || nx >= GRID_WIDTH || ny >= GRID_HEIGHT) continue;
+                            total++;
+                        if (groundVariant[nx][ny] == groundVariant[x][y]) same++;
+                    }
+                    copy[x][y] = (same < (total / 2)) ? 1 - groundVariant[x][y] : groundVariant[x][y];
+                }
+            }
+            groundVariant = copy;
+        }
+    }
 }
