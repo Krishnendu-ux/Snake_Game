@@ -28,8 +28,11 @@ public class GamePanel extends JPanel implements ActionListener {
   }
   public final void startGame() {
         snake = new LinkedList<>();
-        snake.add(new Point(5, 5));
+        score = 0;
+        point head = new point(5,5);
         direction = 'R';
+        snake.add(head);
+        snake.add(new point(head.x -1, head.y));
         spawnFood();
         running = true;
         timer = new javax.swing.Timer(200, this);
