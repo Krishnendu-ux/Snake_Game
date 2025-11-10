@@ -2,6 +2,10 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class GamePanel extends JPanel implements ActionListener {
   private final int BOX_SIZE = 20;
