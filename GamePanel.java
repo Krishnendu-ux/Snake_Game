@@ -130,5 +130,21 @@ public class GamePanel extends JPanel implements ActionListener {
 
  
   public void draw(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g.create();
+
+        // Draw ground tiles
+        for (int gx = 0; gx < GRID_WIDTH; gx++) {
+            for (int gy = 0; gy < GRID_HEIGHT; gy++) {
+                int variant = groundVariant != null ? groundVariant[gx][gy] : (rng.nextBoolean() ? 1 : 0);
+                BufferedImage tile = (variant == 0) ? groundA : groundB;
+                if (tile != null) {
+                    g2.drawImage(tile, gx * BOX_SIZE, gy * BOX_SIZE, null);
+                } 
+                else {
+                  g2.setColor(variant == 0 ? new Color(0xDDEB5A) : new Color(0x8FC64F));
+                  g2.fillRect(gx * BOX_SIZE, gy * BOX_SIZE, BOX_SIZE, BOX_SIZE);
+                }
+            }
+        }
   }
 }
