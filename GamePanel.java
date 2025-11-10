@@ -146,5 +146,38 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
             }
         }
-  }
+    if (running) {
+            if (appleImg != null) {
+                g2.drawImage(appleImg, food.x * BOX_SIZE, food.y * BOX_SIZE, null);
+            } 
+            else {
+                g2.setColor(Color.RED);
+                g2.fillOval(food.x * BOX_SIZE + 3, food.y * BOX_SIZE + 3, BOX_SIZE - 6, BOX_SIZE - 6);
+            } 
+
+            // draw snake
+            for (int i = 0; i < snake.size(); i++) {
+                Point p = snake.get(i);
+                int px = p.x * BOX_SIZE;
+                int py = p.y * BOX_SIZE;
+
+                if (i == 0) {
+                    BufferedImage headImg = headFrameFor(direction);
+                    if (headImg != null) {
+                        g2.drawImage(headImg, px, py, null);
+                    } 
+                    else {
+                        g2.setColor(new Color(0x2E8B57));
+                        g2.fillRect(px, py, BOX_SIZE, BOX_SIZE);
+                        g2.setColor(Color.BLACK);
+                        int eye = Math.max(1, BOX_SIZE / 6);
+                        if (direction == 'U') g2.fillRect(px + BOX_SIZE/2 - eye/2, py + BOX_SIZE/4 - eye/2, eye, eye);
+                        else if (direction == 'D') g2.fillRect(px + BOX_SIZE/2 - eye/2, py + (BOX_SIZE*3)/4 - eye/2, eye, eye);
+                        else if (direction == 'L') g2.fillRect(px + BOX_SIZE/4 - eye/2, py + BOX_SIZE/2 - eye/2, eye, eye);
+                        else g2.fillRect(px + (BOX_SIZE*3)/4 - eye/2, py + BOX_SIZE/2 - eye/2, eye, eye);
+                    }
+                    continue;
+                }
+              
+    }
 }
