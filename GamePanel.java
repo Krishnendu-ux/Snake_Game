@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements ActionListener {
   private boolean running = false;
   private javax.swing.Timer timer;
 
- // private int score = 0; //saap kitna seb khaya uska tracker 
+  private int score = 0; //saap kitna seb khaya uska tracker 
 
   //Constructor - sets up everything when the game starts 
   public GamePanel() {
@@ -83,7 +83,7 @@ public class GamePanel extends JPanel implements ActionListener {
       }
     
       //game over conditions
-    /*  if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newHead.y >= GRID_HEIGHT || snake.contains(newHead)) {
+      if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newHead.y >= GRID_HEIGHT || snake.contains(newHead)) {
         running = false;
         timer.stop();
       }else {
@@ -95,7 +95,7 @@ public class GamePanel extends JPanel implements ActionListener {
             snake.removeLast();
         }
       }
-  } */
+  } 
 
   //handles keyboard inputs
   private class MyKeyAdapter extends KeyAdapter {
