@@ -178,6 +178,69 @@ public class GamePanel extends JPanel implements ActionListener {
                     }
                     continue;
                 }
-              
+                              // tail
+                if (i == snake.size() - 1) {
+                    if (drawTailIfAvailable(g2, i, p)) continue;
+                    g2.setColor(new Color(0x1E7A3A));
+                    g2.fillRect(px, py, BOX_SIZE, BOX_SIZE);
+                    continue;
+                }
+
+                // body segment (straight or corner)
+                Point prev = snake.get(i - 1);
+                Point next = snake.get(i + 1);
+                Point dPrev = new Point(prev.x - p.x, prev.y - p.y);
+                Point dNext = new Point(next.x - p.x, next.y - p.y);
+
+                // straight horizontal
+                if (dPrev.y == 0 && dNext.y == 0) {
+                    if (bodyH != null) g2.drawImage(bodyH, px, py, null);
+                    else { g2.setColor(new Color(0x2E8B57)); g2.fillRect(px, py, BOX_SIZE, BOX_SIZE); }
+                }
+                // straight vertical
+                else if (dPrev.x == 0 && dNext.x == 0) {
+                    if (bodyV != null) g2.drawImage(bodyV, px, py, null);
+                    else { g2.setColor(new Color(0x2E8B57)); g2.fillRect(px, py, BOX_SIZE, BOX_SIZE); }
+                }
+                // corners
+                else {
+                    if ((dPrev.x == -1 && dPrev.y == 0 && dNext.x == 0 && dNext.y == -1) ||
+                        (dNext.x == -1 && dNext.y == 0 && dPrev.x == 0 && dPrev.y == -1)) {
+                        if (cornerUL != null) g2.drawImage(cornerUL, px, py, null);
+                        else { g2.setColor(new Color(0x2E8B57)); g2.fillRect(px, py, BOX_SIZE, BOX_SIZE); }
+                    } 
+                    else if ((dPrev.x == 1 && dPrev.y == 0 && dNext.x == 0 && dNext.y == -1) || (dNext.x == 1 && dNext.y == 0 && dPrev.x == 0 && dPrev.y == -1)) 
+                    {
+                        if (cornerUR != null) g2.drawImage(cornerUR, px, py, null);
+                        else { g2.setColor(new Color(0x2E8B57)); g2.fillRect(px, py, BOX_SIZE, BOX_SIZE); }
+                    } 
+                    else if ((dPrev.x == 1 && dPrev.y == 0 && dNext.x == 0 && dNext.y == 1) || (dNext.x == 1 && dNext.y == 0 && dPrev.x == 0 && dPrev.y == 1)) 
+                    {
+                        if (cornerDR != null) g2.drawImage(cornerDR, px, py, null);
+                        else { g2.setColor(new Color(0x2E8B57)); g2.fillRect(px, py, BOX_SIZE, BOX_SIZE); }
+                    } else {
+                        if (cornerDL != null) g2.drawImage(cornerDL, px, py, null);
+                        else { g2.setColor(new Color(0x2E8B57)); g2.fillRect(px, py, BOX_SIZE, BOX_SIZE); }
+                    }
+                }
+            }
+        }
+        else {
+            // game over UI
+            g2.setColor(Color.black);
+            g2.setFont(new Font("Arial", Font.BOLD, 28));
+            String msg1 = "Game Over! Score: " + score;
+            String msg2 = "Press Enter to Restart";
+            FontMetrics metrics = g2.getFontMetrics(g2.getFont());
+            int x1 = (PANEL_WIDTH - metrics.stringWidth(msg1)) / 2;
+            int x2 = (PANEL_WIDTH - metrics.stringWidth(msg2)) / 2;
+            int y1 = PANEL_HEIGHT / 2 - metrics.getHeight();
+            int y2 = PANEL_HEIGHT / 2 + metrics.getHeight();
+            g2.drawString(msg1, x1, y1);
+            g2.drawString(msg2, x2, y2);
+        }
+        g2.dispose();
+    }
+    
     }
 }
