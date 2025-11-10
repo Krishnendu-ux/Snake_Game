@@ -52,26 +52,27 @@ public class GamePanel extends JPanel implements ActionListener {
   }
 
   public void move() {
-        Point head = snake.peekFirst();
-        Point newHead = new Point(head.x, head.y);
-        switch (direction) {
-            case 'U' -> newHead.y--;
-            case 'D' -> newHead.y++;
-            case 'L' -> newHead.x--;
-            case 'R' -> newHead.x++;
+      Point head = snake.peekFirst();
+      Point newHead = new Point(head.x, head.y);
+      switch (direction) {
+          case 'U' -> newHead.y--;
+          case 'D' -> newHead.y++;
+          case 'L' -> newHead.x--;
+          case 'R' -> newHead.x++;
+      }
+      //game over conditions
+      if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newHead.y >= GRID_HEIGHT || snake.contains(newHead)) {
+        running = false;
+        timer.stop();
+      }else {
+        snake.addFirst(newHead);
+        if (newHead.equals(food)) {
+            spawnFood();
+            score++;
+        } else {
+            snake.removeLast();
         }
-    //game over conditions
-  if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newHead.y >= GRID_HEIGHT || snake.contains(newHead)) {
-    running = false;
-    timer.stop();
-  }else {
-    snake.addFirst(newHead);
-    if (newHead.equals(food)) {
-                spawnFood();
-                score++;
-    } else {
-      snake.removeLast();
-    }
+      }
   }
   
   private class MyKeyAdapter extends KeyAdapter {
