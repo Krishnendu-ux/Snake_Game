@@ -125,5 +125,6 @@ public class GamePanel extends JPanel implements ActionListener {
 
             g.drawString(msg1, x1, y1);
             g.drawString(msg2, x2, y2);
-          
+        }
+  }
 }
