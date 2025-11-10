@@ -116,4 +116,8 @@ public class GamePanel extends JPanel implements ActionListener {
             String msg2 = "Press Enter to Restart";
             g.drawString("Game Over! Score: " + (snake.size() - 1);
             g.drawString("Press Enter to Restart";
+
+          // Get FontMetrics
+            FontMetrics metrics = g.getFontMetrics(g.getFont());
+          
 }
