@@ -96,9 +96,18 @@ public class GamePanel extends JPanel implements ActionListener {
           }
         }
     }
-    @Override
-    public void paintComponent(Graphics g) {
+  @Override
+  public void paintComponent(Graphics g) {
         super.paintComponent(g);
         draw(g);
     }
+  public void draw(Graphics g) {
+        if (running) {
+            g.setColor(Color.RED);
+            g.fillRect(food.x * BOX_SIZE, food.y * BOX_SIZE, BOX_SIZE, BOX_SIZE);
+            g.setColor(Color.GREEN);
+            for (Point p : snake) {
+                g.fillRect(p.x * BOX_SIZE, p.y * BOX_SIZE, BOX_SIZE, BOX_SIZE);
+            }
+        }
 }
