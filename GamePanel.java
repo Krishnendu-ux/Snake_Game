@@ -241,6 +241,16 @@ public class GamePanel extends JPanel implements ActionListener {
         }
         g2.dispose();
     }
+    // Helper: choose head frame based on direction and moveStep (2 in / 1 out)
+    private BufferedImage headFrameFor(char dir) {
+        boolean out = (moveStep % 3) == 2; // 0,1 -> in ; 2 -> out
+        return switch (dir) {
+            case 'U' -> out ? headUpOut : headUpIn;
+            case 'D' -> out ? headDownOut : headDownIn;
+            case 'L' -> out ? headLeftOut : headLeftIn;
+            default  -> out ? headRightOut : headRightIn;
+        };
+    }
     
     }
 }
