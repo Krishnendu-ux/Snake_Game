@@ -106,6 +106,8 @@ public class GamePanel extends JPanel implements ActionListener {
         } else {
             snake.removeLast();
         }
+        // increment movement counter for head animation cycle
+        moveStep++;
       }
   } 
 
