@@ -130,29 +130,5 @@ public class GamePanel extends JPanel implements ActionListener {
 
  
   public void draw(Graphics g) {
-        if (running) {
-            g.setColor(Color.RED); 
-            g.fillRect(food.x * BOX_SIZE, food.y * BOX_SIZE, BOX_SIZE, BOX_SIZE);
-            g.setColor(Color.GREEN);
-            for (Point p : snake) {
-                g.fillRect(p.x * BOX_SIZE, p.y * BOX_SIZE, BOX_SIZE, BOX_SIZE);
-            }
-        } else {
-            g.setColor(Color.WHITE);
-            g.setFont(new Font("Arial", Font.BOLD, 24));
-            String msg1 = "Game Over! Score: " + (snake.size() - 1);
-            String msg2 = "Press Enter to Restart";
-          // Get FontMetrics
-            FontMetrics metrics = g.getFontMetrics(g.getFont());
-          // Calculate positions
-            int x1 = (PANEL_WIDTH - metrics.stringWidth(msg1)) / 2;
-            int x2 = (PANEL_WIDTH - metrics.stringWidth(msg2)) / 2;
-
-            int y1 = PANEL_HEIGHT / 2 - metrics.getHeight();
-            int y2 = PANEL_HEIGHT / 2 + metrics.getHeight();
-
-            g.drawString(msg1, x1, y1);
-            g.drawString(msg2, x2, y2);
-        }
   }
 }
