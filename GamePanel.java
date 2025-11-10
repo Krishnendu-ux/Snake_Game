@@ -24,7 +24,30 @@ public class GamePanel extends JPanel implements ActionListener {
   private boolean running = false;
   private javax.swing.Timer timer;
 
+  
+
   private int score = 0; //saap kitna seb khaya uska tracker 
+
+  // --- Sprite & ground fields ---
+  private final String ASSET_DIR = "assets";
+  private BufferedImage groundA, groundB;
+  private BufferedImage appleImg;
+
+  // head frames (in/out)
+  private BufferedImage headUpIn, headUpOut, headDownIn, headDownOut, headLeftIn, headLeftOut, headRightIn, headRightOut;
+
+  // optional body/corner/tail (if you have them)
+  private BufferedImage bodyH, bodyV;
+  private BufferedImage cornerUL, cornerUR, cornerDL, cornerDR;
+  private BufferedImage tailUp, tailDown, tailLeft, tailRight;
+
+  // ground variant assignment per tile
+  private int[][] groundVariant;
+
+  // movement-tick counter (for 2-in/1-out tongue cycle)
+  private int moveStep = 0;
+
+  private final Random rng = new Random();
 
   //Constructor - sets up everything when the game starts 
   public GamePanel() {
