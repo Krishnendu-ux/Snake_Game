@@ -44,3 +44,7 @@ This project is perfect for learning Java GUI, game loops, and keyboard event ha
 - Inspired by the classic Snake game
 - Built using Java Swing
 - Great project for practicing beginner-friendly game logic
+
+## 📸 Screenshots
+
+![Gameplay](assets/Screenshot.png)
