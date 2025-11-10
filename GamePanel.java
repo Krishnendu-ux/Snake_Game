@@ -119,5 +119,14 @@ public class GamePanel extends JPanel implements ActionListener {
 
           // Get FontMetrics
             FontMetrics metrics = g.getFontMetrics(g.getFont());
+          // Calculate positions
+            int x1 = (PANEL_WIDTH - metrics.stringWidth(msg1)) / 2;
+            int x2 = (PANEL_WIDTH - metrics.stringWidth(msg2)) / 2;
+
+            int y1 = PANEL_HEIGHT / 2 - metrics.getHeight();
+            int y2 = PANEL_HEIGHT / 2 + metrics.getHeight();
+
+            g.drawString(msg1, x1, y1);
+            g.drawString(msg2, x2, y2);
           
 }
