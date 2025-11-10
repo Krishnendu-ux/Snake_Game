@@ -326,4 +326,16 @@ public class GamePanel extends JPanel implements ActionListener {
             return null;
         }
     }
+  
+    private BufferedImage safeScale(BufferedImage src) {
+        if (src == null) return null;
+        if (src.getWidth() == BOX_SIZE && src.getHeight() == BOX_SIZE) return src;
+        BufferedImage scaled = new BufferedImage(BOX_SIZE, BOX_SIZE, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = scaled.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+        g.drawImage(src, 0, 0, BOX_SIZE, BOX_SIZE, null);
+        g.dispose();
+        return scaled;
+    }
+    
 }
