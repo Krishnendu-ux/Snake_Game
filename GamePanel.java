@@ -9,39 +9,28 @@ import javax.imageio.ImageIO;
 
 //main game area - this is where the snake moves and eyerthing happens 
 public class GamePanel extends JPanel implements ActionListener {
-
-  //size setup- box size, grid width & height
   private final int BOX_SIZE = 20;
   private final int GRID_WIDTH = 25, GRID_HEIGHT = 25;
   private final int PANEL_WIDTH = GRID_WIDTH * BOX_SIZE, PANEL_HEIGHT = GRID_HEIGHT * BOX_SIZE;
-
-  //snake body and food position
   private LinkedList<Point> snake;
   private Point food;
-
-  //controls movement diirections and game state
   private char direction = 'R';
   private boolean running = false;
   private javax.swing.Timer timer;
-
+  
   private int score = 0; //saap kitna seb khaya uska tracker 
-
   // --- Sprite & ground fields ---
   private final String ASSET_DIR = "assets";
   private BufferedImage groundA, groundB;
   private BufferedImage appleImg;
-
   // head frames (in/out)
   private BufferedImage headUpIn, headUpOut, headDownIn, headDownOut, headLeftIn, headLeftOut, headRightIn, headRightOut;
-
   // optional body/corner/tail (if you have them)
   private BufferedImage bodyH, bodyV;
   private BufferedImage cornerUL, cornerUR, cornerDL, cornerDR;
   private BufferedImage tailUp, tailDown, tailLeft, tailRight;
-
   // ground variant assignment per tile
   private int[][] groundVariant;
-
   // movement-tick counter (for 2-in/1-out tongue cycle)
   private int moveStep = 0;
 
