@@ -21,7 +21,7 @@ public class GamePanel extends JPanel implements ActionListener {
         setFocusable(true);
         addKeyListener(new MyKeyAdapter());
         startGame();
-   }
+  }
   public final void startGame() {
         snake = new LinkedList<>();
         snake.add(new Point(5, 5));
@@ -61,7 +61,7 @@ public class GamePanel extends JPanel implements ActionListener {
             case 'R' -> newHead.x++;
         }
     //game over conditions
-  if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newhead.y >= RID_HEIGHT || snake.contains(newHead)) {
+  if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newHead.y >= GRID_HEIGHT || snake.contains(newHead)) {
     running = false;
     timer.stop();
   }else {
@@ -70,7 +70,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 spawnFood();
                 score++;
     } else {
-      snake.removelast();
+      snake.removeLast();
     }
   }
   
