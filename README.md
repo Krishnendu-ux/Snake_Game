@@ -25,3 +25,22 @@ This project is perfect for learning Java GUI, game loops, and keyboard event ha
 - Objective: Eat apples to grow and increase your score
 - Avoid: Hitting the walls or your own body
 - Restart: Press the key indicated on the Game Over screen
+
+## 🗺️ Future Improvements
+
+- Difficulty levels (speed increase over time)
+- Obstacles or special items
+- Saving high scores
+- Sound effects and themes
+
+## 👥 Team & Contributions
+
+- Aadarsh Bhandari : Game State & Core Logic
+- Aryaman Kanoi : Rendering & Window Logic
+- Krishnendu Nayak : Input, Spawning, Assets, Setup
+
+## 🙏 Acknowledgements
+
+- Inspired by the classic Snake game
+- Built using Java Swing
+- Great project for practicing beginner-friendly game logic
