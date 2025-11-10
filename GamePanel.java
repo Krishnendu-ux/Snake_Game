@@ -42,6 +42,8 @@ public class GamePanel extends JPanel implements ActionListener {
         setBackground(Color.BLACK);
         setFocusable(true);
         addKeyListener(new MyKeyAdapter());
+        loadSprites();
+        initGroundVariants();
         startGame();
   }
 
