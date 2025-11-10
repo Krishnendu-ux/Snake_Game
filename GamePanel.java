@@ -7,18 +7,26 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+//main game area - this is where the snake moves and eyerthing happens 
 public class GamePanel extends JPanel implements ActionListener {
+
+  //size setup- box size, grid width & height
   private final int BOX_SIZE = 20;
   private final int GRID_WIDTH = 25, GRID_HEIGHT = 25;
   private final int PANEL_WIDTH = GRID_WIDTH * BOX_SIZE, PANEL_HEIGHT = GRID_HEIGHT * BOX_SIZE;
+
+  //snake body and food position
   private LinkedList<Point> snake;
   private Point food;
+
+  //controls movement diirections and game state
   private char direction = 'R';
   private boolean running = false;
   private javax.swing.Timer timer;
 
  // private int score = 0; //saap kitna seb khaya uska tracker 
 
+  //Constructor - sets up everything when the game starts 
   public GamePanel() {
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         setBackground(Color.BLACK);
@@ -26,6 +34,8 @@ public class GamePanel extends JPanel implements ActionListener {
         addKeyListener(new MyKeyAdapter());
         startGame();
   }
+
+  // This starts or restarts the game 
   public final void startGame() {
         snake = new LinkedList<>();
         score = 0; // reset score
@@ -34,12 +44,13 @@ public class GamePanel extends JPanel implements ActionListener {
         direction = 'R';
         snake.add(head);
         snake.add(new Point(head.x -1, head.y)); //initial length 2
-        spawnFood();
+        spawnFood(); //places food randomly 
         running = true;
-        timer = new javax.swing.Timer(200, this);
+        timer = new javax.swing.Timer(200, this); // game speed controller 
         timer.start();
   }
-  
+
+  // Generates food in a random grid cell 
   public void spawnFood() {
         Random rand = new Random();
         int x, y;
@@ -48,9 +59,10 @@ public class GamePanel extends JPanel implements ActionListener {
             y = rand.nextInt(GRID_HEIGHT);
             food = new Point(x, y);
         }
-        while (snake.contains(food));
+        while (snake.contains(food));  // ensures food doesn't spawn on snake 
   }
-  
+
+  // called automatically after every tier (every 200ms)
   @Override
   public void actionPerformed(ActionEvent e) {
       if (running) {
@@ -59,15 +71,17 @@ public class GamePanel extends JPanel implements ActionListener {
       }
   }
 
+  //controls how the snake moves 
   public void move() {
-      Point head = snake.peekFirst();
+      Point head = snake.peekFirst(); //get current head position
       Point newHead = new Point(head.x, head.y);
       switch (direction) {
-          case 'U' -> newHead.y--;
-          case 'D' -> newHead.y++;
-          case 'L' -> newHead.x--;
-          case 'R' -> newHead.x++;
+          case 'U' -> newHead.y--; //move up
+          case 'D' -> newHead.y++; //move down
+          case 'L' -> newHead.x--; //move left
+          case 'R' -> newHead.x++; //move right 
       }
+    
       //game over conditions
     /*  if (newHead.x < 0 || newHead.y < 0 || newHead.x >= GRID_WIDTH || newHead.y >= GRID_HEIGHT || snake.contains(newHead)) {
         running = false;
@@ -82,12 +96,13 @@ public class GamePanel extends JPanel implements ActionListener {
         }
       }
   } */
-  
+
+  //handles keyboard inputs
   private class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
           if (!running && e.getKeyCode() == KeyEvent.VK_ENTER) {
-                startGame();
+                startGame(); //restart when game over 
                 repaint();
           } 
           else if (running) {
@@ -105,14 +120,18 @@ public class GamePanel extends JPanel implements ActionListener {
           }
         }
     }
+
+ 
   @Override
   public void paintComponent(Graphics g) {
         super.paintComponent(g);
         draw(g);
     }
+
+ 
   public void draw(Graphics g) {
         if (running) {
-            g.setColor(Color.RED);
+            g.setColor(Color.RED); 
             g.fillRect(food.x * BOX_SIZE, food.y * BOX_SIZE, BOX_SIZE, BOX_SIZE);
             g.setColor(Color.GREEN);
             for (Point p : snake) {
