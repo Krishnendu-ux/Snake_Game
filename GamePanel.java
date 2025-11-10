@@ -109,5 +109,11 @@ public class GamePanel extends JPanel implements ActionListener {
             for (Point p : snake) {
                 g.fillRect(p.x * BOX_SIZE, p.y * BOX_SIZE, BOX_SIZE, BOX_SIZE);
             }
-        }
+        } else {
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Arial", Font.BOLD, 24));
+            String msg1 = "Game Over! Score: " + (snake.size() - 1);
+            String msg2 = "Press Enter to Restart";
+            g.drawString("Game Over! Score: " + (snake.size() - 1);
+            g.drawString("Press Enter to Restart";
 }
