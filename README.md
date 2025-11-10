@@ -18,3 +18,10 @@ This project is perfect for learning Java GUI, game loops, and keyboard event ha
 - Language: Java
 - Framework: Swing (JFrame, JPanel, Timer)
 - Concepts: Event handling, 2D rendering, arrays, game loop
+
+## 🎯 How to Play
+
+- Move: Arrow keys (↑ ↓ ← →)
+- Objective: Eat apples to grow and increase your score
+- Avoid: Hitting the walls or your own body
+- Restart: Press the key indicated on the Game Over screen
