@@ -120,18 +120,15 @@ public class GamePanel extends JPanel implements ActionListener {
           }
         }
     }
-
- 
+  
   @Override
   public void paintComponent(Graphics g) {
         super.paintComponent(g);
         draw(g);
-    }
-
- 
+  }
+  
   public void draw(Graphics g) {
         Graphics2D g2 = (Graphics2D) g.create();
-
         // Draw ground tiles
         for (int gx = 0; gx < GRID_WIDTH; gx++) {
             for (int gy = 0; gy < GRID_HEIGHT; gy++) {
@@ -146,7 +143,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
             }
         }
-    if (running) {
+        if (running) {
             if (appleImg != null) {
                 g2.drawImage(appleImg, food.x * BOX_SIZE, food.y * BOX_SIZE, null);
             } 
@@ -292,5 +289,20 @@ public class GamePanel extends JPanel implements ActionListener {
         tailDown = safeScale(loadImage("tail_down.png"));
         tailLeft = safeScale(loadImage("tail_left.png"));
         tailRight = safeScale(loadImage("tail_right.png"));
+    }
+
+    private BufferedImage loadImage(String filename) {
+        File f = new File(ASSET_DIR + File.separator + filename);
+        if (!f.exists()) {
+            System.out.println("Asset not found: " + f.getPath() + "  (using fallback)");
+            return null;
+        }
+        try {
+            return ImageIO.read(f);
+        } 
+        catch (IOException ex) {
+            System.err.println("Failed to load: " + f.getPath());
+            return null;
+        }
     }
 }
