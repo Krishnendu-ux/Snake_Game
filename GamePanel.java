@@ -265,4 +265,32 @@ public class GamePanel extends JPanel implements ActionListener {
         if (dy == -1 && tailDown != null) { g2.drawImage(tailDown, px, py, null); return true; }
         return false;
     }
+
+    // ---------------- Asset loading & ground init ----------------
+    private void loadSprites() {
+        groundA = safeScale(loadImage("ground_a.png"));
+        groundB = safeScale(loadImage("ground_b.png"));
+        appleImg = safeScale(loadImage("apple.png"));
+
+        headUpIn  = safeScale(loadImage("head_up_in.png"));
+        headUpOut = safeScale(loadImage("head_up_out.png"));
+        headDownIn  = safeScale(loadImage("head_down_in.png"));
+        headDownOut = safeScale(loadImage("head_down_out.png"));
+        headLeftIn  = safeScale(loadImage("head_left_in.png"));
+        headLeftOut = safeScale(loadImage("head_left_out.png"));
+        headRightIn  = safeScale(loadImage("head_right_in.png"));
+        headRightOut = safeScale(loadImage("head_right_out.png"));
+
+        // optional images (no error if missing)
+        bodyH = safeScale(loadImage("body_h.png"));
+        bodyV = safeScale(loadImage("body_v.png"));
+        cornerUL = safeScale(loadImage("corner_ul.png"));
+        cornerUR = safeScale(loadImage("corner_ur.png"));
+        cornerDL = safeScale(loadImage("corner_dl.png"));
+        cornerDR = safeScale(loadImage("corner_dr.png"));
+        tailUp = safeScale(loadImage("tail_up.png"));
+        tailDown = safeScale(loadImage("tail_down.png"));
+        tailLeft = safeScale(loadImage("tail_left.png"));
+        tailRight = safeScale(loadImage("tail_right.png"));
+    }
 }
